@@ -1,0 +1,57 @@
+<div class="wrapper">
+  <div class="current-page">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Input Detail</li>
+        <li class="breadcrumb-item">Review & Confirm</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="wrapper-content">
+    <div class="content-box">
+      <div class="item">
+        <h5 class="under-line"><b>Tax Filing Detail</b></h5>
+      </div>
+      <!-- <div *ngIf="taxData">
+        <pre>{{ taxData | json }}</pre>
+        <button type="button" class="btn btn-primary" (click)="onConfirm()">Confirm and Submit</button>
+      </div> -->
+      <div class="item-2 row-grid">
+        <div><b>Type of Filing</b></div>
+        <div>{{ taxData?.filingType === '0' ? 'Ordinary Filing' : 'Additional Filing' }}</div>
+      </div>
+      <div></div>
+      <div class="item-2 row-grid pt-3">
+        <div><b>VAT Month</b></div>
+        <div>{{ getMonthName(taxData?.month ?? '') }} {{ taxData?.year }}</div>
+      </div>
+      <div class="item">
+        <h5 class="under-line"><b>Tax Computation</b></h5>
+      </div>
+      <div class="item-2">
+        <p><b>Total value of taxable electronic service exclusive of VAT</b></p>
+      </div>
+      <div class="item-2">
+        <div>{{ taxData?.saleAmount | number:'1.2-2' }} THB</div>
+      </div>
+      <div class="item-2">
+        <p><b>Total VAT to be remitted</b></p>
+      </div>
+      <div class="item-2">
+        <div>{{ taxData?.taxAmount | number:'1.2-2' }} THB</div>
+      </div>
+      <div class="item-2">
+        <p><b>Total Amount Payable</b></p>
+      </div>
+      <div class="item-2">
+        <div>{{ taxData?.totalAmount | number:'1.2-2' }} THB</div>
+      </div>
+      <div class="item">
+        <h5 class="under-line"><b>Declaration</b></h5>
+      </div>
+      <div class="item-2">
+        <p>I hereby certify that information given above are true and correct and agree to be bound by such information.</p>
+      </div>
+    </div>
+  </div>
+</div>

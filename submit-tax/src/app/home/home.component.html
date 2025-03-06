@@ -1,0 +1,150 @@
+<div class="wrapper">
+  <div class="current-page">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page">Input Detail</li>
+        <li class="breadcrumb-item active">Review & Confirm</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="wrapper-content">
+    <div class="content-box">
+      <div class="item">
+        <h5 class="under-line"><b>1. Tax Filing Detail</b></h5>
+      </div>
+      <div class="item-2">
+        <label>Type of Filing*</label>
+      </div>
+      <div class="item-2">
+        <input
+          type="radio"
+          id="ordinaryFiling"
+          name="filingType"
+          value="0"
+          [(ngModel)]="filingType"
+          (change)="onFilingTypeChange()"
+        />
+        <label class="p-1" for="ordinaryFiling">Ordinary Filing</label>
+      </div>
+      <div class="item-2">
+        <input
+          type="radio"
+          id="additionalFiling"
+          name="filingType"
+          value="1"
+          [(ngModel)]="filingType"
+          (change)="onFilingTypeChange()"
+        />
+        <label class="p-1" for="additionalFiling">Additional Filing</label>
+      </div>
+      <div *ngIf="filingType === '0'" class="item-2 mt-3 mb-3">
+        <div>
+          <label>VAT Month*</label>
+        </div>
+        <div class="vat-month-ddl">
+          <select id="month" [(ngModel)]="month">
+            <option *ngFor="let month of filteredMonths" [value]="month.value">
+              {{ month.label }}
+            </option>
+          </select>
+          <select id="year" [(ngModel)]="year">
+            <option *ngFor="let year of years" [value]="year">
+              {{ year }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div *ngIf="filingType === '0'"></div>
+      <div *ngIf="filingType === '1'" class="item-2 mt-3 mb-3">
+        <div>
+          <label>Tax Month*</label>
+        </div>
+        <div class="vat-month-ddl">
+          <select id="month" [(ngModel)]="month">
+            <option *ngFor="let month of filteredMonths" [value]="month.value">
+              {{ month.label }}
+            </option>
+          </select>
+          <select id="year" [(ngModel)]="year">
+            <option *ngFor="let year of years" [value]="year">
+              {{ year }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div *ngIf="filingType === '1'" class="item-2 mt-3 mb-3">
+        <div>
+          <label>Type*</label>
+        </div>
+        <div>
+          <select id="type" [(ngModel)]="type">
+            <option>on-time</option>
+          </select>
+        </div>
+      </div>
+      <div class="item">
+        <div class="tax-computation">
+          <h5 style="margin: 0"><b>2. Tax Computation</b></h5>
+          <a href="#">View Exchange Rate</a>
+        </div>
+        <div class="under-line"></div>
+      </div>
+      <div class="item-2">
+        <b>Provide total value taxable electronic service</b>
+      </div>
+      <div class="item-2 pt-3">
+        1.Total value of taxable electronic service exclusive of VAT
+      </div>
+      <div class="mt-3" id="input-text">
+        <input
+          type="text"
+          [(ngModel)]="saleAmount"
+          (input)="onSaleAmountChange($event)"
+          (blur)="onSaleAmountBlur($event)"
+          placeholder="THB"
+        />
+      </div>
+      <div class="item-2 pt-3">2.Total VAT to be remitted (7% of 1)</div>
+      <div class="mt-3" id="input-text">
+        <input
+          type="text"
+          [(ngModel)]="taxAmount"
+          (input)="onTaxAmountChange($event)"
+          (blur)="onTaxAmountBlur($event)"
+          placeholder="THB"
+        />
+        <p *ngIf="invalidTax" class="text-danger">Invalid Tax</p>
+      </div>
+      <div *ngIf="filingType === '1'" class="item-2 pt-3">
+        <b>In case of late filing and payment, or additional filing</b>
+      </div>
+      <div></div>
+      <div *ngIf="filingType === '1'" class="item-2 pt-3">3.Surcharge</div>
+      <div *ngIf="filingType === '1'" class="mt-3" id="input-text">
+        <input type="text" [(ngModel)]="surcharge" readonly />
+      </div>
+      <div *ngIf="filingType === '1'" class="item-2 pt-3">4.Penalty</div>
+      <div *ngIf="filingType === '1'" class="mt-3" id="input-text">
+        <input type="text" [(ngModel)]="penalty" readonly />
+      </div>
+      <div *ngIf="filingType === '1'" class="item-2 pt-3">
+        5.Total amount of VAT, surcharge, and penalty to be remitted (2.+3.+4.)
+      </div>
+      <div *ngIf="filingType === '1'" class="mt-3" id="input-text">
+        <input type="text" [(ngModel)]="totalAmount" readonly />
+      </div>
+    </div>
+  </div>
+  <div class="wrapper-content">
+    <div class="button-box">
+      <a href="" type="button" class="btn btn-outline-secondary btn-1">Back</a>
+      <button type="button" class="btn btn-secondary btn-1" (click)="onNext()">Next</button>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</div>
