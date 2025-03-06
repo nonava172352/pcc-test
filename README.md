@@ -31,12 +31,21 @@ This project is a web application for submitting tax information.
    cd submit-tax
    ```
 
-2. Start the development server:
+2. If you encounter the following error:
+   ```
+   Error: error:0308010C:digital envelope routines::unsupported
+   ```
+   Set the `NODE_OPTIONS` environment variable:
+   ```bash
+   set NODE_OPTIONS=--openssl-legacy-provider
+   ```
+
+3. Start the development server:
    ```bash
    ng serve
    ```
 
-3. Open your browser and navigate to `http://localhost:4200`.
+4. Open your browser and navigate to `http://localhost:4200`.
 
 ## Building the Project
 
@@ -68,3 +77,4 @@ To get more help on the Angular CLI, use:
 ng help
 ```
 
+For more information on Angular, visit the [Angular Documentation](https://angular.io/docs).
